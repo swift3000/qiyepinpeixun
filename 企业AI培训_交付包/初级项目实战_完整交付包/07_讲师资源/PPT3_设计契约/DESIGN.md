@@ -45,6 +45,7 @@
 ## 5. 构建工艺（python-pptx 克隆，可复跑）
 
 - 底版（donor 真源）：`初级课程_完整交付包/03_PPT课件/通用基础_PPT1_v2.pptx`（38 页）。
+  - ⚠️ 2026-09-02：该 donor 已删除（08_留档 目录随旧版文件一并删除，无备份），donor 页号映射不可复现；PPT3 产物（33 页）保留可用。
 - 工艺：`add_slide(donor.slide_layout)` → 清空 spTree → 深拷贝 donor 子元素（跳过 nvGrpSpPr/grpSpPr）→ 复制 p:bg → 复制 rels（rId 变化则全 XML 重映射）→ **递归进 group 收集文本框，整框精确匹配替换（每个 old 断言唯一命中，防误伤）** → 全局页脚手术（'通用 AI 基础 · 初级'→'实战项目执行手册' + 页码 NN/33）→ 删原 38 页（**克隆前先记录 orig_sldIds，只删这批**——PPT2 首跑 0 页事故的教训）。
 - 文本替换设两阶段：先收集全部命中再统一应用，`set_text` 保留首段 pPr + 首 run rPr，`\n` 拆多段。
 - 脚本：`build_ppt3.py`（本目录；SRC/OUT 按脚本位置定位 parents[3]，可复跑重建）。
