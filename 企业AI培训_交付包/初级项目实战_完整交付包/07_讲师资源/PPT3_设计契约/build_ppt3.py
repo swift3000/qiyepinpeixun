@@ -19,6 +19,7 @@ from pptx import Presentation
 from pptx.oxml.ns import qn
 
 BASE = Path(__file__).resolve().parents[3]
+# 2026-09-02: 38页人人版 donor 源已随目录删除且无备份，PPT3 无法复现重建。已生成的 PPT3(33页,D2/D3用,不依赖D1通识页数)保留可用。重建需先恢复38页donor或改用v3.0(44页)重做DONOR映射。
 SRC = str(BASE / "初级课程_完整交付包/08_留档_人人版v2.3/通用基础_PPT1_v2.pptx")
 OUT = str(BASE / "初级项目实战_完整交付包/03_PPT课件/实战项目_执行手册_PPT3.pptx")
 
